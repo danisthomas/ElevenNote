@@ -23,8 +23,10 @@ namespace ElevenNote.Services
                 {
                     OwnerId = _userId,
                     Title = model.Title,
+                    Category = model.Category,
                     Content = model.Content,
                     CreatedUtc = DateTimeOffset.Now
+                   
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -46,6 +48,7 @@ namespace ElevenNote.Services
                         {
                             NoteId = e.NoteId,
                             Title = e.Title,
+                            Category=e.Category,
                             CreatedUtc = e.CreatedUtc
                         });
                 return query.ToArray();
@@ -64,6 +67,7 @@ namespace ElevenNote.Services
                     {
                         NoteId = entity.NoteId,
                         Title = entity.Title,
+                        Category = entity.Category,
                         Content = entity.Content,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
@@ -81,6 +85,7 @@ namespace ElevenNote.Services
                     .Single(e => e.NoteId == model.NoteId && e.OwnerId == _userId);
 
                 entity.Title = model.Title;
+                entity.Category = model.Category;
                 entity.Content = model.Content;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
