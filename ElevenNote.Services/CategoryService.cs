@@ -21,7 +21,7 @@ namespace ElevenNote.Services
             var entity =
                 new Category()
                 {
-                   // OwnerId = _userId,
+                   OwnerId = _userId,
                    CategoryName = model.CategoryName,
                    SectionName= model.SectionName
 
@@ -39,7 +39,7 @@ namespace ElevenNote.Services
                 var query =
                     ctx
                     .Categories
-                    //.Where(e => e.OwnerId == _userId)
+                    .Where(e => e.OwnerId == _userId)
                     .Select(
                         e =>
                         new CategoryListItems
@@ -58,6 +58,7 @@ namespace ElevenNote.Services
                 var entity =
                     ctx
                     .Categories
+                    .Where(e => e.OwnerId == _userId)
                     .Single(e => e.CategoryId == id);
                 return
                     new CategoryListItems
@@ -65,10 +66,7 @@ namespace ElevenNote.Services
                         CategoryID = entity.CategoryId,
                         CategoryName = entity.CategoryName,
                         SectionName = entity.SectionName,
-
-
                     };
-
             }
         }
         public bool UpdateCategory(CategoryEdit model)
@@ -77,6 +75,7 @@ namespace ElevenNote.Services
             {
                 var entity = ctx
                     .Categories
+                    .Where(e => e.OwnerId == _userId)
                     .Single(e => e.CategoryId == model.CategoryId);
 
                 entity.CategoryName = model.CategoryName;
@@ -92,6 +91,7 @@ namespace ElevenNote.Services
                 var entity =
                     ctx
                       .Categories
+                      .Where(e => e.OwnerId == _userId)
                      .Single(e => e.CategoryId == categoryid);
 
                 ctx.Categories.Remove(entity);
