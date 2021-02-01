@@ -90,6 +90,10 @@
     <Compile Include="Migrations\202101290138394_InitialMigration.Designer.cs">
       <DependentUpon>202101290138394_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101312326199_addingOwnerId.cs" />
+    <Compile Include="Migrations\202101312326199_addingOwnerId.Designer.cs">
+      <DependentUpon>202101312326199_addingOwnerId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +105,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202101290138394_InitialMigration.resx">
       <DependentUpon>202101290138394_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101312326199_addingOwnerId.resx">
+      <DependentUpon>202101312326199_addingOwnerId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

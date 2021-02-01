@@ -44,6 +44,7 @@ namespace ElevenNote.Services
                         e =>
                         new CategoryListItems
                         {
+                            CategoryID=e.CategoryId,
                             CategoryName = e.CategoryName,
                             SectionName = e.SectionName,
                            
@@ -78,8 +79,9 @@ namespace ElevenNote.Services
                     .Where(e => e.OwnerId == _userId)
                     .Single(e => e.CategoryId == model.CategoryId);
 
+
+                entity.CategoryId = model.CategoryId; 
                 entity.CategoryName = model.CategoryName;
-                entity.CategoryId   = model.CategoryId;
                 entity.SectionName = model.SectionName;
                 return ctx.SaveChanges() == 1;
             }
